@@ -4,6 +4,11 @@
  */
 package org.andercabrera.vista.admin;
 
+import org.andercabrera.vista.admin.ventas.Ventas;
+import org.andercabrera.vista.admin.usuarios.Usuarios;
+import org.andercabrera.vista.admin.clientes.Clientes;
+import org.andercabrera.vista.admin.productos.Productos;
+import org.andercabrera.vista.admin.principal.Principal;
 import org.andercabrera.controlador.*;
 
 import java.awt.BorderLayout;

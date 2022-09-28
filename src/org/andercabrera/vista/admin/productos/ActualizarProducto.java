@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.andercabrera.vista.admin;
+package org.andercabrera.vista.admin.productos;
 
 import org.andercabrera.controlador.*;
 import org.andercabrera.modelo.*;

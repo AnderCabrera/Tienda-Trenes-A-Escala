@@ -9,14 +9,24 @@ package org.andercabrera.modelo;
  * @author informatica
  */
 public class clientes {
+    private int id_cliente;
     private String nombre;
     private String apellido;
     private String direccion;
     private String telefono;
     private String email;
     
-    //Constructors
+    // singleton
+    private static clientes instance;
 
+    public static clientes getInstance() {
+        if (instance == null) {
+            instance = new clientes();
+        }
+        return instance;
+    }
+    
+    //Constructors
     public clientes() {
     }
     
@@ -26,6 +36,14 @@ public class clientes {
         this.direccion = direccion;
         this.telefono = telefono;
         this.email = email;
+    }
+
+    public int getId_cliente() {
+      return id_cliente;
+    }
+
+    public void setId_cliente(int id_cliente) {
+      this.id_cliente = id_cliente;
     }
 
     public String getNombre() {

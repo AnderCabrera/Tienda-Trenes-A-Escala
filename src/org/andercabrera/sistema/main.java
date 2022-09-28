@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package org.andercabrera.sistema;
-
+import org.andercabrera.vista.admin.Menu;
 /**
  *
  * @author informatica
@@ -15,6 +15,7 @@ public class main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        Menu menu = new Menu();
     }
     
 }
