@@ -33,6 +33,4 @@ call agregar_producto('ONTC', 'RO72067', 'HO', 37041);
 call agregar_producto('Velaro', 'RO72095', 'HO', 34510);
 call agregar_producto('Regiojet', 'RO73217', 'HO', 20831);
 
-call agregar_venta(1, '2022-09-27');
-
-call agregar_detalle_venta(1, 1, 2);
+call agregar_venta(1, 1, 1, 1000, '2022-09-5');

@@ -84,15 +84,45 @@ DELIMITER //
 CREATE PROCEDURE agregar_venta
 (
 IN  _id_cliente    INT,
+    _id_producto   INT,
+    _cantidad      INT,
+    _total		   INT,
     _fecha_compra  DATE
 )
 BEGIN
     INSERT INTO tbl_ventas (
         id_cliente,
-        fecha_compra) 
+        id_producto,
+        cantidad_producto,
+        dinero_total,
+        fecha_compra
+        )
     VALUES (
         _id_cliente,
-        _fecha_compra);
+        _id_producto,
+        _cantidad,
+        _total,
+        _fecha_compra
+        );
+END //
+DELIMITER ;
+
+-- Historial
+DELIMITER //
+CREATE PROCEDURE historial_cliente
+(
+IN  _id_cliente    INT
+)
+BEGIN
+    select 
+    v.id_producto,
+    p.marca,
+    p.precio,
+    v.cantidad_producto, 
+    v.dinero_total, 
+    v.fecha_compra from tbl_ventas v 
+    left join tbl_productos p 
+    on v.id_producto = p.id_producto where v.id_cliente = _id_cliente;
 END //
 DELIMITER ;
 

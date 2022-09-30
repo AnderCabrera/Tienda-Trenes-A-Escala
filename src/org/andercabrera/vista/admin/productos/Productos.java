@@ -20,12 +20,12 @@ import org.andercabrera.vista.admin.Menu;
  */
 public class Productos extends javax.swing.JPanel {
 
-    private static Menu menu = new Menu();
-    private static CrearProducto addTrains = new CrearProducto();
-    private static ActualizarProducto updateTrains = new ActualizarProducto();
-    private products controladorProductos = new products();
-    private productos modeloProductos = new productos().getInstance();
-    private showDataTable show = new showDataTable().getInstance();
+    private static Menu menu = new Menu().getInstance();
+    private static CrearProducto addTrains = new CrearProducto().getInstance();
+    private static ActualizarProducto updateTrains = new ActualizarProducto().getInstance();
+    private static products controladorProductos = new products().getInstance();
+    private static productos modeloProductos = new productos().getInstance();
+    private static showDataTable show = new showDataTable().getInstance();
 
     //singleton
     private static Productos instance = null;
@@ -38,7 +38,7 @@ public class Productos extends javax.swing.JPanel {
     }
 
     /**
-     * Creates new form Crear
+     * Creates new form 
      */
     public Productos() {
         initComponents();
@@ -109,7 +109,7 @@ public class Productos extends javax.swing.JPanel {
             }
         });
         jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jTable1.setGridColor(new java.awt.Color(255, 153, 0));
+        jTable1.setGridColor(new java.awt.Color(204, 204, 204));
         jTable1.setOpaque(false);
         jTable1.setSelectionBackground(new java.awt.Color(103, 71, 71));
         jTable1.setSelectionForeground(new java.awt.Color(255, 255, 255));
@@ -119,13 +119,6 @@ public class Productos extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
-            jTable1.getColumnModel().getColumn(2).setResizable(false);
-            jTable1.getColumnModel().getColumn(3).setResizable(false);
-            jTable1.getColumnModel().getColumn(4).setResizable(false);
-        }
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 870, 480));
 
@@ -173,7 +166,7 @@ public class Productos extends javax.swing.JPanel {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Nuevo");
-        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel3MouseClicked(evt);
@@ -200,7 +193,7 @@ public class Productos extends javax.swing.JPanel {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Editar");
-        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel4MouseClicked(evt);
@@ -221,7 +214,7 @@ public class Productos extends javax.swing.JPanel {
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 620, -1, 30));
 
         jPanel5.setBackground(new java.awt.Color(255, 51, 51));
-        jPanel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -256,7 +249,7 @@ public class Productos extends javax.swing.JPanel {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Refrescar");
-        jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel6MouseClicked(evt);
@@ -341,7 +334,7 @@ public class Productos extends javax.swing.JPanel {
         int selectedRowIndex = jTable1.getSelectedRow();
         int id_producto = Integer.parseInt(jTable1.getValueAt(selectedRowIndex, 0).toString());
         
-        if (selectedRowIndex > 0) {
+        if (selectedRowIndex >= 0) {
             controladorProductos.deleteProducts(id_producto);
             show.showDataTable(jTable1, "select * from mostrar_productos");
         } else {

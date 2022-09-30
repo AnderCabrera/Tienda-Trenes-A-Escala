@@ -24,8 +24,8 @@ import javax.swing.JPanel;
  */
 public class ActualizarProducto extends javax.swing.JPanel {
 
-    private products controladorProducts = new products().getInstance();
-    productos modeloProducto = new productos().getInstance();
+    private static products controladorProducts = new products().getInstance();
+    private static productos modeloProducto = new productos().getInstance();
 
     
     /**
@@ -35,6 +35,16 @@ public class ActualizarProducto extends javax.swing.JPanel {
         initComponents();
     }
 
+    //singleton
+    private static ActualizarProducto instance = null;
+
+    public static ActualizarProducto getInstance() {
+        if (instance == null) {
+            instance = new ActualizarProducto();
+        }
+        return instance;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

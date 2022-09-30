@@ -32,19 +32,13 @@ CREATE TABLE IF NOT EXISTS tbl_productos (
 );
 
 CREATE TABLE IF NOT EXISTS tbl_ventas (
-    id_venta 	  INT  NOT NULL AUTO_INCREMENT,
-    id_cliente 	  INT  NOT NULL,
-    fecha_compra  DATE NOT NULL,
+    id_venta 	  	  INT  NOT NULL AUTO_INCREMENT,
+    id_cliente 	  	  INT  NOT NULL,
+    id_producto   	  INT  NOT NULL,
+	cantidad_producto INT  NOT NULL,
+    dinero_total 	  INT  NOT NULL,
+    fecha_compra  	  DATE NOT NULL,
     PRIMARY KEY (id_venta),
-    FOREIGN KEY (id_cliente) REFERENCES tbl_clientes (id_cliente)
-);
-
-CREATE TABLE IF NOT EXISTS tbl_detalle_venta (
-    id_detalle_venta  INT    NOT NULL AUTO_INCREMENT,
-    id_venta          INT    NOT NULL,
-    id_producto       INT    NOT NULL,
-    cantidad_producto INT    NOT NULL,
-    PRIMARY KEY (id_detalle_venta),
-    FOREIGN KEY (id_venta) REFERENCES tbl_ventas(id_venta),
+    FOREIGN KEY (id_cliente) REFERENCES tbl_clientes (id_cliente),
     FOREIGN KEY (id_producto) REFERENCES tbl_productos(id_producto)
 );

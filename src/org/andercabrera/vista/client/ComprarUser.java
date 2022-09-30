@@ -2,36 +2,37 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package org.andercabrera.vista.admin.usuarios;
+package org.andercabrera.vista.client;
 
-import org.andercabrera.modelo.usuarios;
-import org.andercabrera.controlador.*;
-import org.andercabrera.vista.admin.*;
-import org.andercabrera.vista.admin.Menu;
-import org.andercabrera.vista.admin.usuarios.CrearUsuarios;
+import org.andercabrera.controlador.salesUser;
+import org.andercabrera.controlador.showDataTable;
+import org.andercabrera.modelo.ventas;
+
+import java.awt.Color;
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import javax.swing.JOptionPane;
-import java.awt.*;
 
 /**
  *
  * @author Deran
  */
-public class Usuarios extends javax.swing.JPanel {;
-    private static Menu menu = new Menu();
-    private static CrearUsuarios crearUsuarios = new CrearUsuarios();
-    private static ActualizarUsuarios editarUsuarios = new ActualizarUsuarios();
+public class ComprarUser extends javax.swing.JPanel {
 
-    private static showDataTable show = new showDataTable().getInstance();
-    private static usuarios modelUsers = new usuarios().getInstance(); 
-    private static users controllerUsers = new users().getInstance();
+    private ventas modeloVentas = ventas.getInstance();
+    private salesUser controladorVentas = salesUser.getInstance();
+    private showDataTable show = showDataTable.getInstance();
 
     /**
-     * Creates new form 
+     * Creates new form ComprarUser
      */
-    public Usuarios() {
+    public ComprarUser() {
         initComponents();
-        show.showDataTable(jTable1, "select * from mostrar_usuarios");
+
+        show.showDataTable(jTable1, "select * from mostrar_productos");
     }
 
     /**
@@ -54,16 +55,13 @@ public class Usuarios extends javax.swing.JPanel {;
         jTextField2 = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-
-        setBackground(new java.awt.Color(255, 255, 255));
+        jTextField1 = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setPreferredSize(new java.awt.Dimension(870, 670));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setPreferredSize(new java.awt.Dimension(870, 670));
@@ -71,24 +69,24 @@ public class Usuarios extends javax.swing.JPanel {;
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Usuarios");
+        jLabel1.setText("Trenes");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 27, -1, -1));
 
         jTable1.setBackground(new java.awt.Color(255, 255, 255));
         jTable1.setForeground(new java.awt.Color(0, 0, 0));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null}
+                {null, null, null, null, null}
             },
             new String [] {
-                "id_usuario", "Id_cliente", "Usuario", "Contraseña", "Estado activo", "Administrador"
+                "Id_producto", "Marca", "Modelo", "Escala", "Precio"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                true, false, false, false, false, false
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -141,8 +139,8 @@ public class Usuarios extends javax.swing.JPanel {;
 
         jTextField2.setBackground(new java.awt.Color(255, 255, 255));
         jTextField2.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField2.setText("Ingrese el nombre del usuario");
-        jTextField2.setToolTipText("Ingrese el nombre del usuario");
+        jTextField2.setText("Ingrese el nombre del producto");
+        jTextField2.setToolTipText("Ingrese el nombre del producto");
         jTextField2.setBorder(null);
         jTextField2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -156,7 +154,7 @@ public class Usuarios extends javax.swing.JPanel {;
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Nuevo");
+        jLabel3.setText("Comprar");
         jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -175,64 +173,7 @@ public class Usuarios extends javax.swing.JPanel {;
             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
         );
 
-        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 620, -1, 30));
-
-        jPanel5.setBackground(new java.awt.Color(18, 90, 173));
-
-        jLabel4.setBackground(new java.awt.Color(18, 90, 173));
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Editar");
-        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel4MouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-        );
-
-        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 620, -1, 30));
-
-        jPanel6.setBackground(new java.awt.Color(255, 51, 51));
-        jPanel6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Eliminar");
-        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel5MouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 30, Short.MAX_VALUE)
-            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
-        );
-
-        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 620, -1, 30));
+        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 620, -1, 30));
 
         jPanel7.setBackground(new java.awt.Color(91, 85, 93));
 
@@ -260,13 +201,26 @@ public class Usuarios extends javax.swing.JPanel {;
 
         jPanel2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 620, -1, 30));
 
+        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField1KeyTyped(evt);
+            }
+        });
+        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 620, 80, 30));
+
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Cantidad de producto");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 620, -1, 30));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(544, 544, 544))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -277,11 +231,21 @@ public class Usuarios extends javax.swing.JPanel {;
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 870, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 670, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -289,15 +253,7 @@ public class Usuarios extends javax.swing.JPanel {;
         // TODO add your handling code here:
         int row = jTable1.getSelectedRow();
 
-        int id_usuario = Integer.parseInt(jTable1.getValueAt(row, 0).toString());
-        int id_cliente = Integer.parseInt(jTable1.getValueAt(row, 1).toString());
-        String user = jTable1.getValueAt(row, 2).toString();
-        String contrasena = jTable1.getValueAt(row, 3).toString();
-
-        modelUsers.setId_usuario(id_usuario);
-        editarUsuarios.txtId_cliente.setText(String.valueOf(id_cliente));
-        editarUsuarios.txtUsuario.setText(user);
-        editarUsuarios.txtcontrasena.setText(contrasena);
+        int id = Integer.parseInt(jTable1.getValueAt(row, 0).toString());
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
@@ -307,7 +263,7 @@ public class Usuarios extends javax.swing.JPanel {;
         if (palabraBuscar.equals("Ingrese el nombre del producto") || palabraBuscar.equals("")) {
             JOptionPane.showMessageDialog(null, "Ingrese una palabra");
         } else {
-            show.showDataTable(jTable1, "select * from mostrar_usuarios where usuario like '%" + palabraBuscar + "%' or administrador like '%" + palabraBuscar + "%'");
+            show.showDataTable(jTable1, "select * from mostrar_productos where marca like '%" + palabraBuscar + "%' or modelo like '%" + palabraBuscar + "%' or escala like '%" + palabraBuscar + "%'");
         }
     }//GEN-LAST:event_jLabel2MouseClicked
 
@@ -319,38 +275,47 @@ public class Usuarios extends javax.swing.JPanel {;
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         // TODO add your handling code here:
-        menu.addPanel(crearUsuarios);
+        int selectedRow = jTable1.getSelectedRow();
+        
+        if (jTextField1.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Ingrese una cantidad");
+        } else if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Seleccione un producto");
+        } else {
+            String date = new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
+            System.out.println(date);
+
+            int id_producto = Integer.parseInt(jTable1.getValueAt(selectedRow, 0).toString());
+            int precio = Integer.parseInt(jTable1.getValueAt(selectedRow, 4).toString());
+            int cantidad = Integer.parseInt(jTextField1.getText());
+            int total = precio * cantidad;
+
+            ventas venta = new ventas(2, id_producto, cantidad, total, date);
+
+            try {
+                controladorVentas.insertSale(venta);
+                JOptionPane.showMessageDialog(null, "Compra realizada");
+                JOptionPane.showMessageDialog(null, "Total: " + total + " Quetzales");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Something went wrong");
+                e.printStackTrace();
+            }
+        }
     }//GEN-LAST:event_jLabel3MouseClicked
-
-    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-        // TODO add your handling code here:
-        int selectedRowIndex = jTable1.getSelectedRow();
-
-        if (selectedRowIndex >= 0) {
-            menu.addPanel(editarUsuarios);
-            show.showDataTable(jTable1, "select * from mostrar_usuarios");
-        } else {
-            JOptionPane.showMessageDialog(null, "Seleccione una fila");
-        }
-    }//GEN-LAST:event_jLabel4MouseClicked
-
-    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
-        // TODO add your handling code here:
-        int selectedRowIndex = jTable1.getSelectedRow();
-        int id_producto = Integer.parseInt(jTable1.getValueAt(selectedRowIndex, 0).toString());
-
-        if (selectedRowIndex > 0) {
-            controllerUsers.deleteUser(id_producto, "call eliminar_usuario(?)");
-            show.showDataTable(jTable1, "select * from mostrar_usuarios");
-        } else {
-            JOptionPane.showMessageDialog(null, "Seleccione una fila");
-        }
-    }//GEN-LAST:event_jLabel5MouseClicked
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
         // TODO add your handling code here:
-        show.showDataTable(jTable1, "select * from mostrar_usuarios");
+        show.showDataTable(jTable1, "select * from mostrar_productos");
     }//GEN-LAST:event_jLabel6MouseClicked
+
+    private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+
+        if (!Character.isDigit(c)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextField1KeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -358,18 +323,16 @@ public class Usuarios extends javax.swing.JPanel {;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }

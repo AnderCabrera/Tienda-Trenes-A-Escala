@@ -20,12 +20,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 /**
  *
- * @author Antonio
+ * @author Deran
  */
 public class CrearProducto extends javax.swing.JPanel {
-    showDataTable show = new showDataTable().getInstance();
-    Productos vistaProducto = new Productos().getInstance();
-    products Productos = products.getInstance();
+    private static products Productos = products.getInstance();
     
     
     /**
@@ -35,6 +33,16 @@ public class CrearProducto extends javax.swing.JPanel {
         initComponents();
     }
 
+    //singleton
+    private static CrearProducto instance = null;
+
+    public static CrearProducto getInstance() {
+        if (instance == null) {
+            instance = new CrearProducto();
+        }
+        return instance;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

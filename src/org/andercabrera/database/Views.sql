@@ -31,16 +31,29 @@ SELECT * FROM mostrar_productos;
 
 -- Ventas
 CREATE VIEW mostrar_ventas AS
-SELECT id_venta, id_cliente, fecha_compra
-FROM tbl_ventas;
+SELECT * FROM tbl_ventas;
 
 -- Querys
 SELECT * FROM mostrar_ventas;
 
--- Detalle de ventas
-CREATE VIEW mostrar_detalle_ventas AS
-SELECT id_detalle_venta, id_venta, id_producto, cantidad_producto
-FROM tbl_detalle_venta;
+-- Historial clientes
+create view historial_clientes as  
+select
+c.id_cliente,
+c.nombre,
+c.apellido,
+p.id_producto,
+p.marca,
+p.precio,
+v.cantidad_producto,
+v.dinero_total,
+v.fecha_compra
+from tbl_clientes c
+inner join tbl_ventas v
+on c.id_cliente = v.id_cliente
+inner join tbl_productos p
+on v.id_producto = p.id_producto;
 
--- Querys
-SELECT * FROM mostrar_detalle_ventas;
+select * from historial_clientes;
+
+call historial_cliente(1);

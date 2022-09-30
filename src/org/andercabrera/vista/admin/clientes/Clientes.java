@@ -20,16 +20,13 @@ public class Clientes extends javax.swing.JPanel {
     private static Menu menu = new Menu();
     private static CrearClientes crearClientes = new CrearClientes();
     private static ActualizarClientes actualizarClientes = new ActualizarClientes();
-    private clientes modeloCliente = new clientes().getInstance();
-    private clients controlador = new clients().getInstance();
-    private showDataTable show = new showDataTable().getInstance();
+    private static clientes modeloCliente = new clientes().getInstance();
+    private static clients controlador = new clients().getInstance();
+    private static showDataTable show = new showDataTable().getInstance();
     
-    /**
-     * Creates new form Clientes
-     */
     public Clientes() {
         initComponents();
-        show.showDataTable(jTable1, "SELECT * FROM mostrar_clientes");
+        show.showDataTable(jTable1, "select * from mostrar_clientes");
     }
 
     /**
@@ -96,7 +93,7 @@ public class Clientes extends javax.swing.JPanel {
             }
         });
         jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jTable1.setGridColor(new java.awt.Color(255, 153, 0));
+        jTable1.setGridColor(new java.awt.Color(204, 204, 204));
         jTable1.setOpaque(false);
         jTable1.setSelectionBackground(new java.awt.Color(103, 71, 71));
         jTable1.setSelectionForeground(new java.awt.Color(255, 255, 255));
@@ -153,7 +150,7 @@ public class Clientes extends javax.swing.JPanel {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Nuevo");
-        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel3MouseClicked(evt);
@@ -180,7 +177,7 @@ public class Clientes extends javax.swing.JPanel {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Editar");
-        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel4MouseClicked(evt);
@@ -201,7 +198,7 @@ public class Clientes extends javax.swing.JPanel {
         jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 620, -1, 30));
 
         jPanel6.setBackground(new java.awt.Color(255, 51, 51));
-        jPanel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -236,7 +233,7 @@ public class Clientes extends javax.swing.JPanel {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Refrescar");
-        jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel6MouseClicked(evt);
@@ -308,7 +305,7 @@ public class Clientes extends javax.swing.JPanel {
         if (palabraBuscar.equals("Ingrese el nombre del producto") || palabraBuscar.equals("")) {
             JOptionPane.showMessageDialog(null, "Ingrese una palabra");
         } else {
-            show.showDataTable(jTable1, "select * from mostrar_clientes where nombre like '%" + palabraBuscar + "%' or apellido like '%" + palabraBuscar + "%' or direccion like '%" + palabraBuscar + "%'");
+            show.showDataTable(jTable1, "select * from mostrar_clientes where nombre like '%" + palabraBuscar + "%' or apellido like '%" + palabraBuscar + "%' or email like '%" + palabraBuscar + "%'");
         }
     }//GEN-LAST:event_jLabel2MouseClicked
 
