@@ -16,10 +16,9 @@ import java.awt.*;
  */
 public class HistorialCompras extends javax.swing.JPanel {
 
-    clientes modeloClientes = clientes.getInstance();
-    controladorLogin loginControlador = controladorLogin.getInstance();
-    usuarios modeloUsuarios = usuarios.getInstance();
+    ComprarUser usuarioCompras = new ComprarUser().getInstance();
     showDataTable show = showDataTable.getInstance();
+    
     /**
      * Creates new form HistorialCompras
      */
@@ -239,7 +238,7 @@ public class HistorialCompras extends javax.swing.JPanel {
         if (palabraBuscar.equals("Ingrese el nombre del producto") || palabraBuscar.equals("")) {
             JOptionPane.showMessageDialog(null, "Ingrese una palabra");
         } else {
-            show.showDataTable(jTable1, "select * from historial_clientes where id_cliente like '%" + palabraBuscar + "%'");
+            show.showDataTable(jTable1, "select * from historial_clientes where id_cliente like '%" + palabraBuscar + "%' or nombre like '% " + palabraBuscar + "%'");
         }
     }//GEN-LAST:event_jLabel2MouseClicked
 
@@ -255,7 +254,7 @@ public class HistorialCompras extends javax.swing.JPanel {
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
         // TODO add your handling code here:
-        show.showDataTable(jTable1, "call historial_cliente(" + modeloUsuarios.getId_cliente() + ")");
+        show.showDataTable(jTable1, "call historial_cliente(" + usuarioCompras.id_cliente + ")");
     }//GEN-LAST:event_jLabel6MouseClicked
 
 

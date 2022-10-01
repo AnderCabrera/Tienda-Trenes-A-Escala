@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import org.andercabrera.controlador.*;
 import org.andercabrera.modelo.*;
 import org.andercabrera.vista.*;
+import org.andercabrera.vista.admin.Menu;
 import org.andercabrera.vista.client.ComprarUser;
 import org.andercabrera.vista.client.MenuUser;
 
@@ -26,6 +27,7 @@ public class Logiin extends javax.swing.JFrame {
     controladorLogin loginControlador = controladorLogin.getInstance();
     private static ComprarUser userCompras = ComprarUser.getInstance();
     private static MenuUser menuUsuario = new MenuUser();
+    private static Menu menuAdmin = new Menu();
 
     public int id_cliente = 0;
 
@@ -34,6 +36,7 @@ public class Logiin extends javax.swing.JFrame {
      */
     public Logiin() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     // singleton
@@ -53,7 +56,7 @@ public class Logiin extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         bg = new javax.swing.JPanel();
@@ -68,7 +71,6 @@ public class Logiin extends javax.swing.JFrame {
         passwordSeparator = new javax.swing.JSeparator();
         enterButton = new javax.swing.JPanel();
         enterText = new javax.swing.JLabel();
-        createAccount = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -87,16 +89,17 @@ public class Logiin extends javax.swing.JFrame {
         javax.swing.GroupLayout rightPanelLayout = new javax.swing.GroupLayout(rightPanel);
         rightPanel.setLayout(rightPanelLayout);
         rightPanelLayout.setHorizontalGroup(
-                rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(rightPanelLayout.createSequentialGroup()
-                                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE)
-                                .addContainerGap()));
+            rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(rightPanelLayout.createSequentialGroup()
+                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE)
+                .addContainerGap())
+        );
         rightPanelLayout.setVerticalGroup(
-                rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(rightPanelLayout.createSequentialGroup()
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 607,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 23, Short.MAX_VALUE)));
+            rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(rightPanelLayout.createSequentialGroup()
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 607, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 23, Short.MAX_VALUE))
+        );
 
         bg.add(rightPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 0, 280, 630));
 
@@ -150,39 +153,26 @@ public class Logiin extends javax.swing.JFrame {
         javax.swing.GroupLayout enterButtonLayout = new javax.swing.GroupLayout(enterButton);
         enterButton.setLayout(enterButtonLayout);
         enterButtonLayout.setHorizontalGroup(
-                enterButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(enterText, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE));
+            enterButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(enterText, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+        );
         enterButtonLayout.setVerticalGroup(
-                enterButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(enterText, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE));
+            enterButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(enterText, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+        );
 
         bg.add(enterButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 410, 160, 50));
-
-        createAccount.setBackground(new java.awt.Color(51, 153, 255));
-        createAccount.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        createAccount.setForeground(new java.awt.Color(51, 153, 255));
-        createAccount.setText("Crear cuenta");
-        createAccount.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        createAccount.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                createAccountMousePressed(evt);
-            }
-
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                createAccountMouseReleased(evt);
-            }
-        });
-        bg.add(createAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 440, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(bg, javax.swing.GroupLayout.PREFERRED_SIZE, 811, Short.MAX_VALUE));
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(bg, javax.swing.GroupLayout.PREFERRED_SIZE, 811, Short.MAX_VALUE)
+        );
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(bg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                javax.swing.GroupLayout.PREFERRED_SIZE));
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(bg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -214,12 +204,18 @@ public class Logiin extends javax.swing.JFrame {
 
             userCompras.id_cliente = id_cliente;        
 
-            
-            System.out.println("id_cliente: " + id_cliente);
+            userTextField.setText("");
+            passwordTextField.setText("");            
 
             this.dispose();
             menuUsuario.setVisible(true);
             
+        } else if(user.equals("admin") && password.equals("admin")) {
+            this.dispose();
+            menuAdmin.setVisible(true);
+
+            userTextField.setText("");
+            passwordTextField.setText(""); 
         } else {
             JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos");
         }
@@ -236,45 +232,44 @@ public class Logiin extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        // <editor-fold defaultstate="collapsed" desc=" Look and feel setting code
-        // (optional) ">
-        /*
-         * If Nimbus (introduced in Java SE 6) is not available, stay with the default
-         * look and feel.
-         * For details see
-         * http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Logiin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Logiin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Logiin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Logiin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        // </editor-fold>
+    // public static void main(String args[]) {
+    //     /* Set the Nimbus look and feel */
+    //     // <editor-fold defaultstate="collapsed" desc=" Look and feel setting code
+    //     // (optional) ">
+    //     /*
+    //      * If Nimbus (introduced in Java SE 6) is not available, stay with the default
+    //      * look and feel.
+    //      * For details see
+    //      * http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+    //      */
+    //     try {
+    //         for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+    //             if ("Nimbus".equals(info.getName())) {
+    //                 javax.swing.UIManager.setLookAndFeel(info.getClassName());
+    //                 break;
+    //             }
+    //         }
+    //     } catch (ClassNotFoundException ex) {
+    //         java.util.logging.Logger.getLogger(Logiin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    //     } catch (InstantiationException ex) {
+    //         java.util.logging.Logger.getLogger(Logiin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    //     } catch (IllegalAccessException ex) {
+    //         java.util.logging.Logger.getLogger(Logiin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    //     } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+    //         java.util.logging.Logger.getLogger(Logiin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    //     }
+    //     // </editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Logiin().setVisible(true);
-            }
-        });
-    }
+    //     /* Create and display the form */
+    //     java.awt.EventQueue.invokeLater(new Runnable() {
+    //         public void run() {
+    //             new Logiin().setVisible(true);
+    //         }
+    //     });
+    // }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bg;
-    private javax.swing.JLabel createAccount;
     private javax.swing.JPanel enterButton;
     private javax.swing.JLabel enterText;
     private javax.swing.JLabel jLabel5;

@@ -49,23 +49,5 @@ public class controladorLogin {
     return false;
   }
 
-  //get id_cliente from database
-  public void getIdCliente(String user) {
-    int id = 0;
-    try {
-      Connection con = conexion.getConnection();
-      PreparedStatement ps = con.prepareStatement("SELECT id_cliente FROM tbl_usuarios WHERE usuario = ?");
-      ps.setString(1, user);
-      ResultSet rs = ps.executeQuery();
-      if (rs.next()) {
-        id = rs.getInt("id_cliente");
-      }
-    } catch (SQLException e) {
-      System.out.println("Error al obtener id_cliente: " + e.getMessage());
-      e.printStackTrace();
-    }
-    modeloUsuarios.setId_cliente(id);
-    System.out.println("id_cliente: " + modeloUsuarios.getId_cliente());
-  }
 
 }
