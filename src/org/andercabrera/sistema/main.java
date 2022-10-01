@@ -4,6 +4,7 @@
  */
 package org.andercabrera.sistema;
 import org.andercabrera.vista.admin.Menu;
+import org.andercabrera.vista.login.*;
 /**
  *
  * @author informatica
@@ -15,7 +16,7 @@ public class main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Menu menu = new Menu();
+        Login menu = new Login();
         menu.setVisible(true);
     }
     

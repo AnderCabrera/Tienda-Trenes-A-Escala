@@ -107,11 +107,23 @@ BEGIN
 END //
 DELIMITER ;
 
+-- get id_cliente
+DELIMITER //
+CREATE PROCEDURE get_id_cliente
+(
+IN  _usuario 		VARCHAR(50),
+    _contrasena 	VARCHAR(50)
+)
+BEGIN
+    SELECT id_cliente FROM tbl_usuarios WHERE usuario = _usuario AND contrasena = _contrasena;
+END //
+DELIMITER ;
+
 -- Historial
 DELIMITER //
 CREATE PROCEDURE historial_cliente
 (
-IN  _id_cliente    INT
+IN  _id_cliente  INT
 )
 BEGIN
     select 

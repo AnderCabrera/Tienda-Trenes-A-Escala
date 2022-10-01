@@ -17,9 +17,11 @@ import static org.andercabrera.vista.admin.Menu.content;
  */
 public class MenuUser extends javax.swing.JFrame {
 
-    Menu menu = new Menu();
-    PrincipalUser principal = new PrincipalUser();
-    ComprarUser compras = new ComprarUser();
+    private Menu menu = new Menu();
+    private PrincipalUser principal = new PrincipalUser();
+    private ComprarUser compras = new ComprarUser();
+    private HistorialCompras historial = new HistorialCompras();
+    
 
     /**
      * Creates new form Menu
@@ -229,6 +231,7 @@ public class MenuUser extends javax.swing.JFrame {
 
         menu.selectedButton(btn_prin);
         menu.deselectedButton(btn_crear);
+        menu.deselectedButton(btn_vehiculos);
     }//GEN-LAST:event_btn_prinMouseClicked
 
     private void btn_crearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_crearMouseClicked
@@ -237,10 +240,16 @@ public class MenuUser extends javax.swing.JFrame {
 
         menu.selectedButton(btn_crear);
         menu.deselectedButton(btn_prin);
+        menu.deselectedButton(btn_vehiculos);
     }//GEN-LAST:event_btn_crearMouseClicked
 
     private void btn_vehiculosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_vehiculosMouseClicked
         // TODO add your handling code here:
+        addPanel(historial);
+        
+        menu.selectedButton(btn_vehiculos);
+        menu.deselectedButton(btn_prin);
+        menu.deselectedButton(btn_crear);
     }//GEN-LAST:event_btn_vehiculosMouseClicked
 
     /**

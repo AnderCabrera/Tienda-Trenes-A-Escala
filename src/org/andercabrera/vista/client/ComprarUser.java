@@ -5,8 +5,11 @@
 package org.andercabrera.vista.client;
 
 import org.andercabrera.controlador.salesUser;
-import org.andercabrera.controlador.showDataTable;
+import org.andercabrera.controlador.*;
+import org.andercabrera.modelo.*;
 import org.andercabrera.modelo.ventas;
+import org.andercabrera.vista.*;
+import org.andercabrera.vista.login.Logiin;
 
 import java.awt.Color;
 import java.sql.Date;
@@ -22,7 +25,6 @@ import javax.swing.JOptionPane;
  */
 public class ComprarUser extends javax.swing.JPanel {
 
-    private ventas modeloVentas = ventas.getInstance();
     private salesUser controladorVentas = salesUser.getInstance();
     private showDataTable show = showDataTable.getInstance();
 
@@ -34,6 +36,18 @@ public class ComprarUser extends javax.swing.JPanel {
 
         show.showDataTable(jTable1, "select * from mostrar_productos");
     }
+
+    // singleton
+    private static ComprarUser instance = null;
+
+    public static ComprarUser getInstance() {
+        if (instance == null) {
+            instance = new ComprarUser();
+        }
+        return instance;
+    }
+
+    public static int id_cliente = 0;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -276,7 +290,7 @@ public class ComprarUser extends javax.swing.JPanel {
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         // TODO add your handling code here:
         int selectedRow = jTable1.getSelectedRow();
-        
+
         if (jTextField1.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Ingrese una cantidad");
         } else if (selectedRow < 0) {
@@ -290,16 +304,13 @@ public class ComprarUser extends javax.swing.JPanel {
             int cantidad = Integer.parseInt(jTextField1.getText());
             int total = precio * cantidad;
 
-            ventas venta = new ventas(2, id_producto, cantidad, total, date);
+            System.out.println(id_cliente);
 
-            try {
-                controladorVentas.insertSale(venta);
-                JOptionPane.showMessageDialog(null, "Compra realizada");
-                JOptionPane.showMessageDialog(null, "Total: " + total + " Quetzales");
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Something went wrong");
-                e.printStackTrace();
-            }
+            ventas venta = new ventas(id_cliente, id_producto, cantidad, total, date);
+
+            controladorVentas.insertSale(venta);
+            JOptionPane.showMessageDialog(null, "Compra realizada");
+            JOptionPane.showMessageDialog(null, "Total: " + total + " Quetzales");
         }
     }//GEN-LAST:event_jLabel3MouseClicked
 
