@@ -1,4 +1,4 @@
-use tienda_linea;
+-- use tienda_linea;
 
 -- Clientes
 CREATE VIEW mostrar_clientes AS

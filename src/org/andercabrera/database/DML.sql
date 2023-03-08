@@ -1,4 +1,4 @@
-use tienda_linea;
+-- use tienda_linea;
 
 call agregar_cliente('Ander', 'Cabrera', 'Zona 7', '12345678', 'aCabrera@gmail.com');
 call agregar_cliente('Juan', 'Perez', 'Zona 1', '12345678', 'jPerez@gmail.com');

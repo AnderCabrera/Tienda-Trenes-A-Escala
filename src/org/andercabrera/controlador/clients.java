@@ -4,11 +4,6 @@ import org.andercabrera.modelo.clientes;
 
 import java.sql.*;
 
-
-/**
- * @author Deram
- */
-
 public class clients {
   connection conexion = new connection().getInstance();
 

@@ -1,5 +1,5 @@
-CREATE DATABASE tienda_linea;
-USE tienda_linea;
+-- CREATE DATABASE tienda_linea;
+-- USE tienda_linea;
 
 CREATE TABLE IF NOT EXISTS tbl_clientes (
     id_cliente  INT         NOT NULL AUTO_INCREMENT, 

@@ -1,26 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package org.andercabrera.controlador;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
-/**
- *
- * @author Deran
- */
 public class connection {
 
     private static connection instance;
     private Connection conexion;
 
     // MySQL data
-    private String url = "jdbc:mysql://localhost:3306/tienda_linea?TimeZone=UTC&useSSL=false";
-    private String user = "root";
-    private String password = "mysql.com";
+    private String url = "jdbc:mysql://btd9evgvr1nucv1qrwdm-mysql.services.clever-cloud.com/btd9evgvr1nucv1qrwdm";
+    private String user = "ueibrsfshxeiofkx";
+    private String password = "SQlxgJNPEizGDSjLxmNw";
 
     // constructor
     public connection() {

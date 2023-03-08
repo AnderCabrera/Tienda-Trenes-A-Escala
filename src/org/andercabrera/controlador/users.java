@@ -4,9 +4,6 @@ import org.andercabrera.modelo.usuarios;
 
 import java.sql.*;
 
-/**
- * users
- */
 public class users {
     connection conexion = new connection().getInstance();
   
